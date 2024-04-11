@@ -1,13 +1,13 @@
 import './Card.css'
-import image from '../../img/khachapuri.png'
 
-export default function Card({name, description, price, img_source}) {
+export default function Card({name, description, price, img_source, category}) {
+  
   return(
       <div className="card">
         <div className="card__top">
           <a href="#" className="card__image">
             <img
-              src={image}
+              src={"/img/" + img_source}
               alt="Not found"
             />
           </a>
@@ -17,6 +17,7 @@ export default function Card({name, description, price, img_source}) {
           </div>
           <a href="#" className="card__title">{name}
           </a>
+          <p>{description}</p>
           <button className="card__add">В корзину</button>
         </div>
       </div>

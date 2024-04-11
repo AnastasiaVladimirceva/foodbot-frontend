@@ -1,5 +1,5 @@
 .button {
-    padding: 0.8rem 2rem;
+    padding: 0.3rem 0.5rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -15,4 +15,10 @@
 .button.active {
     background: #3e6ae1;
     color: #fff;
+}
+
+.navBar {
+    display: flex;
+    margin-bottom: 1rem;
+    overflow: hidden;
 }

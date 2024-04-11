@@ -16,7 +16,7 @@ export const menu = [
     positive_grades: 0,
     negative_grades: 0,
     note: "string",
-    category: "string",
+    category: "burgers",
     amount_in_cart: 0
   },
   {
@@ -28,7 +28,7 @@ export const menu = [
     positive_grades: 0,
     negative_grades: 0,
     note: "string",
-    category: "string",
+    category: "salads",
     amount_in_cart: 0
   },
   {
@@ -40,7 +40,7 @@ export const menu = [
     positive_grades: 0,
     negative_grades: 0,
     note: "string",
-    category: "string",
+    category: "dessert",
     amount_in_cart: 0
   },{
     id: 4,
@@ -51,7 +51,7 @@ export const menu = [
     positive_grades: 0,
     negative_grades: 0,
     note: "string",
-    category: "string",
+    category: "mainMenu",
     amount_in_cart: 0
   }
 ]
