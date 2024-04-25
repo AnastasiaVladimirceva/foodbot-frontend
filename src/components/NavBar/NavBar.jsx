@@ -1,23 +1,16 @@
 import Button from "../Button/Button"
 import { useState } from "react"
+import { differences } from "../../data"
 
 
-export default function NavBar() {
-    const [contentType, setContentType] = useState(null)
-    
-    function handleClick(type) {
-        setContentType(type)
-        // console.log(type)
-    }
-    
+export default function NavBar({category, onChange}) {
+    const [contentType, setContentType] = useState('Бургеры 🍔')
+
     return (
         <section>
           <h3>Меню</h3>
-          <div className="navBar">
-            <Button isActive={contentType == 'mainMenu'} onClick={() => handleClick('mainMenu')}>Основные блюда</Button>
-            <Button isActive={contentType == 'burgers'} onClick={() => handleClick('burgers')}>Бургеры</Button>
-            <Button isActive={contentType == 'salads'} onClick={() => handleClick('salads')}>Салаты</Button>
-            <Button isActive={contentType == 'dessert'} onClick={() => handleClick('dessert')}>Десерты</Button>
+          <div className='navBar'>
+            {category.map((inform) => (<Button key={inform.id} {...inform} isActive={contentType == inform.name} onClick={() => {onChange(inform.name), setContentType(inform.name)}}/>))}
           </div>
         </section>
     )
