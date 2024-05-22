@@ -1,7 +1,7 @@
 
-import './FoodPage.css'
+import './Kitchen.css'
 
-export default function FoodPage({name, description}) {
+export default function Kitchen() {
     return (
         <main>
             <div className="mainPage">
@@ -9,8 +9,8 @@ export default function FoodPage({name, description}) {
             <img src="https://menunedeli.ru/wp-content/uploads/2022/07/41322293-5B97-451F-886E-2522AB91F67B-1200x948.jpeg" alt="Not found" />
             </div>
             <div className="infoCard">
-                <h2>{name}</h2>
-                <p>{description}</p>
+                <h2>name</h2>
+                <p>description</p>
             </div>
             
         </div>
