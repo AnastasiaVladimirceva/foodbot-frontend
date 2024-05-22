@@ -1,48 +1,57 @@
-import Header from "./components/Header"
 import React, { useEffect } from "react"
-import Form from "./components/Form/Form"
-import NavBar from "./components/NavBar/NavBar"
 import { Fragment } from "react"
 import { useState } from "react"
+import { serv } from "./data"
 import FoodPage from "./components/FoodPage/FoodPage"
+import HomePage from "./components/HomePage"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Kitchen from "./components/Kitchen/Kitchen"
+import ShoppingBag from "./components/ShoppingBag/ShoppindBag"
+
 
 
 export default function App() {
   const [ tab, setTab ] = useState('Бургеры 🍔')
-  const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [category, setCategory] = useState([])
+  const [dataSet, setDataSet] = useState()
   
   async function fetchData() {
-    setLoading(true)
-    const response = await fetch('https://api.ricoroma.ru/menu/0/positions')
+    const response = await fetch(serv+'menu/0/positions')
     const data = await response.json()
     setData(data)
-    setLoading(false)
   }
   async function fetchCategory() {
-    setLoading(true)
-    const response = await fetch('https://api.ricoroma.ru/menu/categories')
-    const category = await response.json()
+    const res = await fetch(serv+'menu/categories')
+    const category = await res.json()
     setCategory(category)
-    setLoading(false)
+  }
+
+  async function fetchDataPost() {
+    const response = await fetch(serv+'menu/0/update_cart', {
+        method: 'POST', 
+        body: JSON.stringify(dataSet)
+    })
+    const data = await response.json()
+    setData(data)
   }
   useEffect(() => {
     fetchData(data),
     fetchCategory(category)
+    // fetchDataPost(data)
   }, [])
-  
+
+
   return (
     <Fragment>
-      <Header />
-      <main>
-        <NavBar category={category} active={tab} onChange={(current) => setTab(current)}/>
-        {tab && 
-        <>
-        <Form category={tab} data={data}/>
-        </>}
-        {/* <FoodPage/> */}
-      </main>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage category={category} tab={tab} setTab={(current) => setTab(current)} data={data} setDataSet={setDataSet}/>} />
+          <Route path="/food-page" element={<FoodPage name={'Чизбургер'} description={'рубленый бифштекс из натуральной цельной говядины с кусочками сыра Чеддер на карамелизованной булочке, заправленной горчицей, кетчупом, луком и кусочком маринованного огурчика'}/>} />
+          <Route path="/kitchen" element={<Kitchen />} />
+          <Route path="/shopping_bag" element={<ShoppingBag data={data}/>} />
+        </Routes>
+      </Router>
     </Fragment>
   )
 }

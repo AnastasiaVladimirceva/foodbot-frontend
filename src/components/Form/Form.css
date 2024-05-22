@@ -8,6 +8,5 @@
 	justify-items: center; /* Размещаем карточку по центру */
 	column-gap: 30px; /* Отступ между колонками */
 	row-gap: 40px; /* Отступ между рядами */
-	margin: 0 auto;
+	margin: 70px auto;
   }
-

@@ -5,7 +5,7 @@
     cursor: pointer;
     transition: all 0.3s;
     font-weight: bold;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .button:hover {
@@ -17,8 +17,3 @@
     color: #fff;
 }
 
-.navBar {
-    display: flex;
-    margin-bottom: 1rem;
-    overflow: hidden;
-}
